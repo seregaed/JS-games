@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hacker survey</title>
+  <title>GAME</title>
   <meta charset="UTF-8">
 </head>
 <style>
@@ -9,8 +9,48 @@
 </style>
 <body>
 <script>
-var name = prompt("Как вас зовут?");
-console.log("Привет, " + name);
+var words = [
+"программа",
+"макака",
+"прекрасный",
+"оладушек"
+];
+var word = words[Math.floor(Math.random() * words.length)];
+var answerArray = [];
+for (var i = 0; i < word.length; i++) {
+answerArray[i] = "_";
+}
+var remainingLetters = word.length;
+var count = word.length*2;
+while (remainingLetters > 0 && count > 0) {
+  alert(answerArray.join(" "));
+  console.log(count);
+  var guess = prompt("Угадайте букву или нажмите Отмена для выхода из игры.").toLowerCase();
+  count--;
+if (guess === null) {
+alert("Пожалуйста, введите букву.");
+} else if (guess.length !== 1) {
+alert("Пожалуйста, введите только одну букву.");
+} else{
+  for (var j = 0; j < word.length; j++) {
+
+    if (word[j] === guess) {
+      if (answerArray[j] === guess) {
+        alert("Уже отмечено!");
+      } else {
+      answerArray[j] = guess;
+      remainingLetters--;
+    };
+};
+};
+};
+};
+if (count=0 || remainingLetters > 0) {
+  alert("GAME OVER");
+} else {
+alert(answerArray.join(" "));
+alert("Отлично! Было загадано слово " + word + "!");
+};
 </script>
 
 </body>
